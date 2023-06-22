@@ -1,4 +1,4 @@
-package ru.job4j.resttemplate.controller;
+package ru.job4j.webclient.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.job4j.resttemplate.model.Item;
-import ru.job4j.resttemplate.service.TrackerService;
+import ru.job4j.webclient.model.Item;
+import ru.job4j.webclient.service.TrackerService;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ import java.util.List;
  */
 @AllArgsConstructor
 @RestController
-@RequestMapping("/resttemplates")
+@RequestMapping("/webclient")
 public class TrackerController {
     private final TrackerService trackerService;
 
@@ -32,7 +32,9 @@ public class TrackerController {
     @PutMapping
     public ResponseEntity<HttpStatus> update(@RequestParam int id, @RequestBody Item item) {
         boolean status = trackerService.update(id, item);
-        return ResponseEntity.status(status ? HttpStatus.OK : HttpStatus.NOT_FOUND).build();
+        return ResponseEntity
+                .status(status ? HttpStatus.OK : HttpStatus.NOT_FOUND)
+                .build();
     }
 
     @DeleteMapping

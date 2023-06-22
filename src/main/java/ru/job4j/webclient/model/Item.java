@@ -1,4 +1,4 @@
-package ru.job4j.resttemplate.model;
+package ru.job4j.webclient.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
